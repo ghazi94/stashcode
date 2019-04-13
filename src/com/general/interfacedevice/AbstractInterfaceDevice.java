@@ -3,10 +3,14 @@ package com.general.interfacedevice;
 import com.general.smarthomedevice.SmartHomeDeviceImpl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AbstractInterfaceDevice {
     private List<SmartHomeDeviceImpl> attachedDevices = new ArrayList<>();
+    private Map<Integer, List<Timing>> startEndTimes = new HashMap<>();
+
     private String activationCommand;
     private DeviceType deviceType;
 
@@ -59,13 +63,50 @@ public class AbstractInterfaceDevice {
         }
 
         if (command.commandType == CommandType.SWITCH_ON) {
-            smartHomeDevice.turnOn();
+            boolean result = smartHomeDevice.turnOn();
+            if (result) {
+                safePut(deviceId, new Timing("ON"));
+            }
         } else if (command.commandType == CommandType.SWITCH_OFF) {
-            smartHomeDevice.turnOff();
+            boolean result = smartHomeDevice.turnOff();
+            safePut(deviceId, new Timing("OFF"));
         } else if (command.commandType == CommandType.SET_LEVEL) {
             smartHomeDevice.setVariableValue(command.level);
         }
 
         return false;
+    }
+
+    public void printUsages() {
+        for (Map.Entry<Integer, List<Timing>> entry : startEndTimes.entrySet()) {
+            Integer deviceId = entry.getKey();
+            List<Timing> timings = entry.getValue();
+            Long cumulativeTime = 0l;
+            boolean currentlyOn = false;
+
+            for (int i = 0; i < timings.size() - 1; i++) {
+                if (timings.get(i).state.equalsIgnoreCase("ON") &&
+                        timings.get(i + 1).state.equalsIgnoreCase("OFF")) {
+                    cumulativeTime = cumulativeTime + timings.get(i + 1).time - timings.get(i).time;
+                }
+            }
+
+            if (timings.get(timings.size() - 1).state.equalsIgnoreCase("ON")) {
+                currentlyOn = true;
+                cumulativeTime = cumulativeTime + System.currentTimeMillis() - timings.get(timings.size() - 1).time;
+            }
+
+            System.out.println("Device id: " + deviceId + " has been on for: " + cumulativeTime + " ms" );
+            if (currentlyOn) {
+                System.out.println("Device id: " + deviceId + " is also currently on");
+            }
+        }
+    }
+
+    private void safePut(Integer id, Timing timing) {
+        if (!startEndTimes.containsKey(id)) {
+            startEndTimes.put(id, new ArrayList<>());
+        }
+        startEndTimes.get(id).add(timing);
     }
 }

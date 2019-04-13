@@ -3,9 +3,11 @@ package com.general;
 import com.general.interfacedevice.AbstractInterfaceDevice;
 import com.general.interfacedevice.Command;
 import com.general.interfacedevice.DeviceType;
+import com.general.interfacedevice.Timing;
 import com.general.smarthomedevice.SmartHomeDeviceImpl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HomeSystem {
@@ -45,5 +47,11 @@ public class HomeSystem {
         interfaceDevice.runCommand(command, deviceId);
 
         return result;
+    }
+
+    public void printUsages() {
+        for (AbstractInterfaceDevice interfaceDevice : interfaceDeviceMap.values()) {
+            interfaceDevice.printUsages();
+        }
     }
 }

@@ -25,8 +25,19 @@ public class Main {
 
             command = new Command(CommandType.SWITCH_ON, "Alexa");
             homeSystem.giveCommand(DeviceType.ALEXA, command, 1);
+
+            Thread.sleep(34);
+            command = new Command(CommandType.SWITCH_OFF, "Alexa");
+            homeSystem.giveCommand(DeviceType.ALEXA, command, 1);
+
+            Thread.sleep(40);
+            command = new Command(CommandType.SWITCH_ON, "Alexa");
+            homeSystem.giveCommand(DeviceType.ALEXA, command, 1);
+
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        homeSystem.printUsages();
     }
 }

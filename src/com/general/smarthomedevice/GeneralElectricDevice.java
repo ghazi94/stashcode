@@ -1,7 +1,16 @@
 package com.general.smarthomedevice;
 
 public class GeneralElectricDevice implements SmartHomeDeviceImpl {
+    private Integer id;
 
+    public GeneralElectricDevice(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public Integer getDeviceId() {
+        return this.id;
+    }
 
     @Override
     public boolean turnOn() {

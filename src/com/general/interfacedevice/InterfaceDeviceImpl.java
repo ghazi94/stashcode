@@ -12,4 +12,6 @@ public interface InterfaceDeviceImpl {
 
     void addSmartHomeDevice(SmartHomeDeviceImpl smartHomeDevice);
     List<SmartHomeDeviceImpl> getSmartHomeDevices();
+
+    boolean runCommand(Command command, Integer deviceId, String activationCommand);
 }

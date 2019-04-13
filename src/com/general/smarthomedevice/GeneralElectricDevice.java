@@ -2,6 +2,7 @@ package com.general.smarthomedevice;
 
 public class GeneralElectricDevice implements SmartHomeDeviceImpl {
     private Integer id;
+    private boolean isOn = false;
 
     public GeneralElectricDevice(Integer id) {
         this.id = id;

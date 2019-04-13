@@ -3,6 +3,7 @@ package com.general.smarthomedevice;
 public class Fan implements SmartHomeDeviceImpl {
     private Integer id;
     private Integer fanSpeed = 1;
+    private boolean isOn = false;
 
     public Fan(Integer id) {
         this.id = id;
@@ -15,8 +16,9 @@ public class Fan implements SmartHomeDeviceImpl {
 
     @Override
     public boolean turnOn() {
-
-        return false;
+        this.isOn = true;
+        System.out.println("Successfully switched on the fan");
+        return true;
     }
 
     @Override

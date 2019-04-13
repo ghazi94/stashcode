@@ -4,6 +4,9 @@ import com.general.smarthomedevice.SmartHomeDeviceImpl;
 
 import java.util.List;
 
+/*
+    Unused command for now
+ */
 public interface InterfaceDeviceImpl {
     DeviceType getDeviceType();
 

@@ -1,10 +1,10 @@
 package com.general.smarthomedevice;
 
-import java.util.List;
 
 public class Light implements SmartHomeDeviceImpl {
     private Integer brightnessLevel = 1;
     private Integer id;
+    private boolean isOn = false;
 
     public Light(Integer id) {
         this.id = id;

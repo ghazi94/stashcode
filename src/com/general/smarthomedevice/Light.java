@@ -10,8 +10,15 @@ public class Light extends AbstractSmartHomeDevice {
 
     @Override
     public boolean setVariableValue(Integer level) {
+        boolean result = false;
         // check if brightness is being set in the correct range of 1 - 10
-        System.out.println("Successfully set the brightness to: " + level);
-        return false;
+        if (level > 0 && level < 11) {
+            this.brightnessLevel = level;
+            System.out.println("Successfully set the brightness to: " + level);
+            result = true;
+        } else {
+            System.out.println("Invalid fan speed provided");
+        }
+        return result;
     }
 }

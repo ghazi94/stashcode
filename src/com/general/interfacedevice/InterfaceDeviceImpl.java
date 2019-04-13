@@ -5,7 +5,6 @@ import com.general.smarthomedevice.SmartHomeDeviceImpl;
 import java.util.List;
 
 public interface InterfaceDeviceImpl {
-    void setDeviceType(DeviceType deviceType);
     DeviceType getDeviceType();
 
     void setActivationCommand(String activationCommand);

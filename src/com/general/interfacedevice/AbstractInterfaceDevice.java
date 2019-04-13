@@ -1,6 +1,6 @@
 package com.general.interfacedevice;
 
-import com.general.smarthomedevice.SmartHomeDeviceImpl;
+import com.general.smarthomedevice.AbstractSmartHomeDevice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AbstractInterfaceDevice {
-    private List<SmartHomeDeviceImpl> attachedDevices = new ArrayList<>();
+    private List<AbstractSmartHomeDevice> attachedDevices = new ArrayList<>();
     private Map<Integer, List<Timing>> startEndTimes = new HashMap<>();
 
     private String activationCommand;
@@ -34,11 +34,11 @@ public class AbstractInterfaceDevice {
         return this.activationCommand;
     }
 
-    public void addSmartHomeDevice(SmartHomeDeviceImpl smartHomeDevice) {
+    public void addSmartHomeDevice(AbstractSmartHomeDevice smartHomeDevice) {
         attachedDevices.add(smartHomeDevice);
     }
 
-    public List<SmartHomeDeviceImpl> getSmartHomeDevices() {
+    public List<AbstractSmartHomeDevice> getSmartHomeDevices() {
         // make new and set to avoid modification
         return this.attachedDevices;
     }
@@ -50,8 +50,8 @@ public class AbstractInterfaceDevice {
         }
 
         // Check if the device with id is present or not
-        SmartHomeDeviceImpl smartHomeDevice = null;
-        for (SmartHomeDeviceImpl smartHomeDeviceX : this.attachedDevices) {
+        AbstractSmartHomeDevice smartHomeDevice = null;
+        for (AbstractSmartHomeDevice smartHomeDeviceX : this.attachedDevices) {
             if (smartHomeDeviceX.getDeviceId() == deviceId) {
                 smartHomeDevice = smartHomeDeviceX;
                 break;

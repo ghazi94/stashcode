@@ -1,6 +1,6 @@
 package com.general.interfacedevice;
 
-import com.general.smarthomedevice.SmartHomeDeviceImpl;
+import com.general.smarthomedevice.AbstractSmartHomeDevice;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public interface InterfaceDeviceImpl {
     void setActivationCommand(String activationCommand);
     String getActivationCommand();
 
-    void addSmartHomeDevice(SmartHomeDeviceImpl smartHomeDevice);
-    List<SmartHomeDeviceImpl> getSmartHomeDevices();
+    void addSmartHomeDevice(AbstractSmartHomeDevice smartHomeDevice);
+    List<AbstractSmartHomeDevice> getSmartHomeDevices();
 
     boolean runCommand(Command command, Integer deviceId, String activationCommand);
 }

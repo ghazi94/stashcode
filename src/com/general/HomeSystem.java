@@ -3,11 +3,9 @@ package com.general;
 import com.general.interfacedevice.AbstractInterfaceDevice;
 import com.general.interfacedevice.Command;
 import com.general.interfacedevice.DeviceType;
-import com.general.interfacedevice.Timing;
-import com.general.smarthomedevice.SmartHomeDeviceImpl;
+import com.general.smarthomedevice.AbstractSmartHomeDevice;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class HomeSystem {
@@ -23,7 +21,7 @@ public class HomeSystem {
     }
 
     // Since only 1 type of interface device can be present
-    public boolean addSmartHomeDevice(SmartHomeDeviceImpl smartHomeDevice, DeviceType deviceType) {
+    public boolean addSmartHomeDevice(AbstractSmartHomeDevice smartHomeDevice, DeviceType deviceType) {
         boolean result = false;
         AbstractInterfaceDevice interfaceDevice = interfaceDeviceMap.get(deviceType);
         if (interfaceDevice == null) {

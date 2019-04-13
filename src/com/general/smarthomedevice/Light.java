@@ -21,4 +21,12 @@ public class Light extends AbstractSmartHomeDevice {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Light{" +
+                "brightnessLevel=" + brightnessLevel +
+                ", state=" + this.isOn +
+                '}';
+    }
 }

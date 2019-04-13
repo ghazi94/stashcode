@@ -12,4 +12,11 @@ public class GeneralElectricDevice extends AbstractSmartHomeDevice {
         System.out.println("General Electric Device does not support any feature with variable value");
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "GeneralElectricDevice{" +
+                "state=" + this.isOn +
+                '}';
+    }
 }

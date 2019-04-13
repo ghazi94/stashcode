@@ -22,4 +22,12 @@ public class Fan extends AbstractSmartHomeDevice {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Fan{" +
+                "speed=" + fanSpeed +
+                ", state=" + this.isOn +
+                '}';
+    }
 }

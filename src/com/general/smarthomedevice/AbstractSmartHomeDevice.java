@@ -2,7 +2,7 @@ package com.general.smarthomedevice;
 
 public abstract class AbstractSmartHomeDevice {
     private Integer id;
-    private boolean isOn = false;
+    protected boolean isOn = false;
 
     public AbstractSmartHomeDevice(Integer id) {
         this.id = id;

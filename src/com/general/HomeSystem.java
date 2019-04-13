@@ -52,4 +52,11 @@ public class HomeSystem {
             interfaceDevice.printUsages();
         }
     }
+
+    public void showAttachedDevices() {
+        for (DeviceType deviceType : interfaceDeviceMap.keySet()) {
+            System.out.println("Devices attached to: " + deviceType);
+            interfaceDeviceMap.get(deviceType).printAttachedDevices();
+        }
+    }
 }

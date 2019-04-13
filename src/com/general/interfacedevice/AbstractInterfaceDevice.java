@@ -43,6 +43,12 @@ public class AbstractInterfaceDevice {
         return this.attachedDevices;
     }
 
+    public void printAttachedDevices() {
+        for (AbstractSmartHomeDevice abs : this.attachedDevices) {
+            System.out.println(abs);
+        }
+    }
+
     public boolean runCommand(Command command, Integer deviceId) {
         if (!command.activationCommand.equalsIgnoreCase(this.activationCommand)) {
             System.out.println("Invalid activation command");
